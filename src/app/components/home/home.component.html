@@ -1,3 +1,5 @@
+
+
 <clr-main-container>
   <clr-header>
     <!-- designate primary navigation from the header-nav container -->
@@ -14,7 +16,7 @@
   <div class="content-container">
     <main class="content-area">
       <!-- app / page content -->
-      <app-show-product [products]= "products"></app-show-product>
+      <app-show-product [products]="products"></app-show-product>
     </main>
     <!-- designate secondary navigation -->
     <nav class="sidenav" [clr-nav-level]="2">
@@ -22,7 +24,6 @@
       <a class="nav-link"><span class="nav-text">Orders</span></a>
       <a class="nav-link"><span class="nav-text">Customers</span></a>
       <a class="nav-link"><span class="nav-text">Products Categories</span></a>
-
     </nav>
   </div>
 </clr-main-container>
