@@ -1,13 +1,18 @@
 <h1>list des products</h1>
-<button class="btn btn-outline btn-sm" (click)="addProduct()">add product</button>
+<button class="btn btn-outline btn-sm" (click)="addProduct()">
+  add product
+</button>
 
 <!-- Modal add or Edit -->
-<app-add-or-edit-product-modal *ngIf="productModalOpen"></app-add-or-edit-product-modal>
+<app-add-or-edit-product-modal
+  *ngIf="productModalOpen"
+  [product]="selectedProduct"
+  (finish)= "handleFinish($event)"
+></app-add-or-edit-product-modal>
 
 <!-- Modal delete -->
 
 <!-- Modal add or Edit -->
-
 
 <clr-datagrid>
   <clr-dg-column>ID</clr-dg-column>
@@ -16,27 +21,28 @@
   <clr-dg-column>prix</clr-dg-column>
   <clr-dg-column>stock</clr-dg-column>
 
-
-  <clr-dg-row  *clrDgItems="let product of products">
+  <clr-dg-row *clrDgItems="let product of products">
     <!-- btn action -->
-      <clr-dg-action-overflow>
-        <button class="action-item" (click)="onEdit(product)">Edit</button>
-        <button class="action-item" (click)="onDelete(product)">Delete</button>
-      </clr-dg-action-overflow>
-      <!-- fin -->
-    <clr-dg-cell>{{product.idProduct}}</clr-dg-cell>
-    <clr-dg-cell>{{product.name}}</clr-dg-cell>
-    <clr-dg-cell>{{product.description}}</clr-dg-cell>
-    <clr-dg-cell>{{product.price}}</clr-dg-cell>
-    <clr-dg-cell>{{product.stock}} In Stock</clr-dg-cell>
-
+    <clr-dg-action-overflow>
+      <button class="action-item" (click)="onEdit(product)">Edit</button>
+      <button class="action-item" (click)="onDelete(product)">Delete</button>
+    </clr-dg-action-overflow>
+    <!-- fin -->
+    <clr-dg-cell>{{ product.idProduct }}</clr-dg-cell>
+    <clr-dg-cell>{{ product.name }}</clr-dg-cell>
+    <clr-dg-cell>{{ product.description }}</clr-dg-cell>
+    <clr-dg-cell>{{ product.price }}</clr-dg-cell>
+    <clr-dg-cell>{{ product.stock }} In Stock</clr-dg-cell>
   </clr-dg-row>
 
   <!-- Inside the full datagrid declaration -->
-<clr-dg-footer>
-  <clr-dg-pagination #pagination [clrDgPageSize]="10">
-    <clr-dg-page-size [clrPageSizeOptions]="[10,20,50,100]">Products per page</clr-dg-page-size>
-    {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} Products
-  </clr-dg-pagination>
-</clr-dg-footer>
+  <clr-dg-footer>
+    <clr-dg-pagination #pagination [clrDgPageSize]="10">
+      <clr-dg-page-size [clrPageSizeOptions]="[10, 20, 50, 100]"
+        >Products per page</clr-dg-page-size
+      >
+      {{ pagination.firstItem + 1 }} - {{ pagination.lastItem + 1 }} of
+      {{ pagination.totalItems }} Products
+    </clr-dg-pagination>
+  </clr-dg-footer>
 </clr-datagrid>

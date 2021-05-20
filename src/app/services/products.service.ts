@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Product } from '../models/product';
 import { Response } from '../models/response';
 
 @Injectable({
@@ -19,5 +20,18 @@ export class ProductsService {
 
   getProducts():Observable<Response> {
     return this.http.get<Response>(this.baseUrl2)
+  }
+// 
+  addProduct(product :Product) : Observable<Response> {
+    let params = new FormData();
+    params.append('name',product.name);
+    params.append('description',product.description);
+    params.append('price',product.price.toString());
+    params.append('stock',product.stock.toString());
+    params.append('category',product.category);
+    params.append('image',product.image);
+
+    return this.http.post<Response>(this.baseUrl2,params)
+
   }
 }
