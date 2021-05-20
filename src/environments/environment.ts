@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   api:'http://localhost:8000/',
-  api_key : 'adsffsdfds6b-6727-46f4-8bee-2c6ce6293e41'
+  api_key : 'adsffsdfds6b-6727-46f4-8bee-2c6ce6293e41',
+  api_image : 'http://localhost:8000/images/products'
 };
 
 /*
